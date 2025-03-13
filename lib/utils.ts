@@ -15,3 +15,7 @@ export function formatDate(date: string) {
     // hour12: true
   })
 }
+
+export function parseServerActionResponse<T>(response: T) {
+  return JSON.parse(JSON.stringify(response));
+}

@@ -10,6 +10,7 @@ import { z } from 'zod';
 import { formSchema } from '@/lib/validation';
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from 'next/navigation';
+import { createPitch } from '@/lib/actions';
 
 const StartupForm = () => {
 
@@ -29,14 +30,14 @@ const StartupForm = () => {
             };
             await formSchema.parseAsync(formValues);
 
-            const result = await createIdea(prevState, formData, pitch);
+            const result = await createPitch(prevState, formData, pitch);
 
             if(result.status == "SUCCESS") {
                 toast({
                     title: "Success",
                     description: "Your idea has been submitted successfully",
                 })
-                router.push(`/startup/${result.id}`);
+                router.push(`/startup/${result._id}`);
             }
 
             return result;
