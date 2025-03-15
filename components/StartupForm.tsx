@@ -36,6 +36,7 @@ const StartupForm = () => {
                 toast({
                     title: "Success",
                     description: "Your idea has been submitted successfully",
+                    className: "bg-green-700 text-white"
                 })
                 router.push(`/startup/${result._id}`);
             }
@@ -50,7 +51,8 @@ const StartupForm = () => {
             toast({
                 title: "Error",
                 description: "Please check your input and try again",
-                variant: "destructive"
+                variant: "destructive",
+                className: "bg-red-700 text-white"
             })
 
             return { ...prevState, error: "Validation failed", status: "ERROR" };
@@ -59,7 +61,8 @@ const StartupForm = () => {
           toast({
             title: "Error",
             description: "An unexpected error occurred while submitting your idea",
-            variant: "destructive"
+            variant: "destructive",
+            className: "bg-red-700 text-white"
             })
 
           return {
